@@ -4,6 +4,8 @@ use sdl2::keyboard::Keycode;
 use std::time::Duration;
 use std::cell::RefCell;
 
+mod bitmap;
+
 pub struct SdlTwo { 
     sdl_context: sdl2::Sdl,
     video_subsystem: sdl2::VideoSubsystem,
@@ -33,11 +35,23 @@ impl SdlTwo {
         instance
     }
 
-   pub fn draw(&self) {
-        self.canvas.borrow_mut().set_draw_color(Color::RGB(0, 255, 255));
+    pub fn drawBitmap(&self, map: &Bitmap) { //Draws a bitmap to canvas
+        let mut pos = u32;
         self.canvas.borrow_mut().clear();
+        for r in (0..(map.width)) {
+            for c in (0..(map.height)) {
+                pos = r*map.width + c*4;
+                self.canvas.borrow_mut()
+                    .set_draw_color(Color::RGBA(map.components[pos + 0],
+                                                map.components[pos + 1],
+                                                map.components[pos + 2],
+                                                map.components[pos + 3]));
+                self.canvas.borrow_mut()
+                    .draw_point(r, c);
+
+            }
+        }
         self.canvas.borrow_mut().present();
-        loop{}
     }
 
 }
