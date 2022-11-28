@@ -47,9 +47,11 @@ impl SdlTwo {
                                                 map.components[pos + 2],
                                                 map.components[pos + 3]));
                 self.canvas.borrow_mut()
-                    .draw_point(sdl2::rect::Point::new(c as i32, r as i32));
+                    .draw_point(sdl2::rect::Point::new(r, c));
+
             }
         }
         self.canvas.borrow_mut().present();
     }
+
 }
