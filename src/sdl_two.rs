@@ -38,9 +38,9 @@ impl SdlTwo {
     pub fn drawBitmap(&self, map: &Bitmap) { //Draws a bitmap to canvas
         let mut pos: usize = 0;
         self.canvas.borrow_mut().clear();
-        for r in (0..(map.width)) {
-            for c in (0..(map.height)) {
-                pos = (r*map.width + c*4) as usize;
+        for r in 0..map.width {
+            for c in 0..map.height {
+                pos = ((r + c*map.width)*4) as usize;
                 self.canvas.borrow_mut()
                     .set_draw_color(Color::RGBA(map.components[pos + 0],
                                                 map.components[pos + 1],

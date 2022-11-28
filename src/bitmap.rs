@@ -21,7 +21,7 @@ impl Bitmap {
     }
     
     pub fn drawPixel(&mut self, x: u32, y: u32, r: u8, g: u8, b: u8, a: u8) {
-        let i = (x + y * self.width * 4) as usize;
+        let i = ((x + y * self.width) * 4) as usize;
         self.components[i + 0] = r; 
         self.components[i + 1] = g; 
         self.components[i + 2] = b; 
