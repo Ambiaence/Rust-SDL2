@@ -8,7 +8,7 @@ fn main() {
     let mut map = Bitmap::new(800, 600);
     for i in 100..=200 {
         for j in 0..=10 {
-            map.drawPixel(200 + j, i, 255 as u8, 0x66 as u8, 0x99 as u8, 0xff as u8 );
+            map.drawPixel(500 + j, i, 255 as u8, 0x66 as u8, 0x99 as u8, 0xff as u8 );
         }
     }
     sdl.drawBitmap(&map);
